@@ -5,7 +5,7 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "./ui/dropdown-menu"; 
+} from "./ui/dropdown-menu";
 import React, { useState } from "react";
 import { useGlobalState } from "@/context/AppContext";
 
@@ -20,7 +20,11 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className={`flex ${selectedLang==="AR" && "flex-row-reverse"} items-center justify-between h-[94px] px-8 bg-white border-b border-[#E5E7EB]`}>
+    <div
+      className={`flex ${
+        selectedLang === "AR" && "flex-row-reverse"
+      } items-center justify-between h-[94px] px-8 bg-white border-b border-[#E5E7EB]`}
+    >
       {/* Logo */}
       <div>
         <img
@@ -29,19 +33,25 @@ export default function Navbar() {
           className="h-10"
         />
       </div>
-     
+
       <DropdownMenu open={open} onOpenChange={setOpen}>
         <DropdownMenuTrigger
           onClick={() => setOpen((prev) => !prev)}
-          className="flex items-center justify-between w-[110px] h-[40px] px-4 py-2 bg-white border font-semibold border-[#D1D5DB] rounded-lg text-[15px] text-[#222]  hover:bg-[#F9FAFB] transition-all"
+          className="flex items-center justify-between w-[110px] h-[40px] px-4 py-2 bg-white border font-semibold border-[#D1D5DB] rounded-[0.5rem] text-[15px] text-[#222]  hover:bg-[#F9FAFB] transition-all"
         >
           {selectedLang}
-          {open ? <IoIosArrowUp /> : <IoIosArrowDown />}
+          <span
+            className={`ml-2 transition-transform duration-300 ease-in-out ${
+              open ? "rotate-180" : "rotate-0"
+            }`}
+          >
+            <IoIosArrowDown />
+          </span>
         </DropdownMenuTrigger>
 
         <DropdownMenuContent
-          sideOffset={0}
-          className="w-[110px] min-w-[110px] bg-white p-1 rounded-lg shadow-lg mt-[0.4rem]"
+          sideOffset={6}
+          className="w-[110px] min-w-[110px] bg-white p-1 rounded-lg  [box-shadow:0_8px_25px_10px_rgba(150,154,221,0.22)]"
         >
           {languages.map((lang) => (
             <DropdownMenuItem
@@ -51,7 +61,7 @@ export default function Navbar() {
               }`}
               onSelect={() => {
                 setSelectedLang(lang.code);
-                setOpen(false); 
+                setOpen(false);
               }}
             >
               {lang.label}
