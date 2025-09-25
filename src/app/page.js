@@ -1,13 +1,15 @@
 "use client";
-import Banner from "@/components/Banner";
+
 import Navbar from "@/components/Navbar";
+import Table from "@/components/Table";
 
 export default function Home() {
   return (
     <div  >
       <header>
         <Navbar></Navbar>
-        <Banner></Banner>
+        <Table></Table>
+        
       </header>
 
     </div>
